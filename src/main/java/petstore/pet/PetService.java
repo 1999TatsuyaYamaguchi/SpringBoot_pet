@@ -1,4 +1,4 @@
-package com.springPET_STORE;
+package petstore.pet;
 
 import java.util.List;
 

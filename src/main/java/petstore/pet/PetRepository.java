@@ -1,4 +1,4 @@
-package com.springPET_STORE;
+package petstore.pet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class PetRepository {
 		return ptm;
 	}
 
-	public List<PetModel> statusSearch(String status) {
+	/* public List<PetModel> statusSearch(String status) {
 		List<PetModel> statusList = new ArrayList<>();
 		for (PetModel pmdStatus : petList) {
 			if (pmdStatus.getStatus().equals(status)) {
@@ -42,15 +42,30 @@ public class PetRepository {
 			}
 		}
 		return statusList;
+	} */
+
+	//stream Ver.
+	public List<PetModel> statusSearch(String status) {
+		return petList.stream()
+				.filter(p -> p.getStatus().equals(status))
+				.toList();
 	}
 
-	public PetModel idSearch(Long id) {
+	/* public PetModel idSearch(Long id) {
 		for (PetModel pmdId : petList) {
 			if (pmdId.getId().equals(id)) {
 				return pmdId;
 			}
 		}
 		return null;
+	} */
+
+	// stream Ver.
+	public PetModel idSearch(Long id) {
+		return petList.stream()
+				.filter(p -> p.getId().equals(id))
+				.findFirst()
+				.orElse(null);
 	}
 
 	public PetModel deletePetInfo(Long id) {

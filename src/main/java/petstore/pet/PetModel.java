@@ -1,17 +1,20 @@
-package com.springPET_STORE;
+package petstore.pet;
 
 public class PetModel {
 	Long id;
+	Category category;
 	String name;
-	String status;
 	String photoUrl;
+	Tag tag;
+	String status;
 
-	public PetModel(Long id, String name, String status, String photoUrl) {
-		super();
+	public PetModel(Long id, Category category, String name, String photoUrl, Tag tag, String status) {
 		this.id = id;
+		this.category = category;
 		this.name = name;
-		this.status = status;
 		this.photoUrl = photoUrl;
+		this.tag = tag;
+		this.status = status;
 	}
 
 	public Long getId() {

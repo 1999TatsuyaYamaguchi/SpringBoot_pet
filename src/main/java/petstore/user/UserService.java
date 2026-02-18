@@ -1,4 +1,4 @@
-package USER;
+package petstore.user;
 
 import org.springframework.stereotype.Service;
 
@@ -11,23 +11,23 @@ public class UserService {
 	}
 
 	public UserModel add(UserModel user) {
-		return userRepository.addUserInfo(user);
+		return userRepository.add(user);
 	}
 
 	public UserModel searchByUsername(String username) {
-		return userRepository.userSearch(username);
+		return userRepository.search(username);
 	}
 
 	public UserModel update(String username, UserModel user) {
-		return userRepository.updateUserInfo(username, user);
+		return userRepository.update(username, user);
 	}
 
 	public UserModel delete(String username) {
-		return userRepository.deleteUserInfo(username);
+		return userRepository.delete(username);
 	}
 
 	public UserModel login(String username, String password) {
-		UserModel user = userRepository.userSearch(username);
+		UserModel user = userRepository.search(username);
 		if (user.getPassword().equals(password)) {
 			return user;
 		}

@@ -1,4 +1,4 @@
-package USER;
+package petstore.user;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

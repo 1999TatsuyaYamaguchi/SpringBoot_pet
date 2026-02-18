@@ -1,4 +1,4 @@
-package USER;
+package petstore.user;
 
 public class UserModel {
 	Long id;
@@ -10,9 +10,8 @@ public class UserModel {
 	String phone;
 	int userStatus;
 
-	public UserModel(Long id, String username, String firstName, String lastName, String email, String password,
-			String phone, int userStatus) {
-		super();
+	public UserModel(Long id, String username, String firstName,
+			String lastName, String email, String password, String phone, int userStatus) {
 		this.id = id;
 		this.username = username;
 		this.firstName = firstName;

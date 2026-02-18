@@ -1,4 +1,4 @@
-package USER;
+package petstore.user;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,24 +10,32 @@ public class UserRepository {
 	List<UserModel> usersList = new ArrayList<>();
 	Long userCount = 1L;
 
-	public UserModel addUserInfo(UserModel user) {
+	public UserModel add(UserModel user) {
 		user.setId(userCount);
 		userCount++;
 		usersList.add(user);
 		return user;
 	}
 
-	public UserModel userSearch(String username) {
+	/* public UserModel search(String username) {
 		for (UserModel usn : usersList) {
 			if (usn.getUsername().equals(username)) {
 				return usn;
 			}
 		}
 		return null;
+	} */
+
+	//stream Ver.
+	public UserModel search(String username) {
+		return usersList.stream()
+				.filter(usn -> usn.getUsername().equals(username))
+				.findFirst()
+				.orElse(null);
 	}
 
-	public UserModel updateUserInfo(String username, UserModel user) {
-		UserModel updUser = userSearch(username);
+	public UserModel update(String username, UserModel user) {
+		UserModel updUser = search(username);
 		if (updUser == null) {
 			System.out.println("指定したユーザー名が存在しません");
 			return null;
@@ -41,7 +49,7 @@ public class UserRepository {
 		return updUser;
 	}
 
-	public UserModel deleteUserInfo(String username) {
+	public UserModel delete(String username) {
 		for (int i = 0; i < usersList.size(); i++) {
 			if (usersList.get(i).getUsername().equals(username)) {
 				return usersList.remove(i);
